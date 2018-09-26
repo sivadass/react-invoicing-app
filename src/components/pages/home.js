@@ -22,12 +22,18 @@ const Home = () => {
         return (
           <div className="app-wrapper">
             <header className="container fluid">Home</header>
-            <article className="container">
-              Welcome to React Invoicing App
-            </article>
-            {data.users.map(user => {
-              return <div>{user.email}</div>;
-            })}
+            <main className="container">
+              <div className="col-md-6">
+                {data.users.map(user => {
+                  return <div>{user.email}</div>;
+                })}
+              </div>
+              <div className="col-md-6">
+                {data.users.map(user => {
+                  return <div>{user.email}</div>;
+                })}
+              </div>
+            </main>
           </div>
         );
       }}
