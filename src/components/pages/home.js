@@ -25,7 +25,7 @@ const Home = () => {
             <main className="container">
               <div className="col-md-6">
                 {data.users.map(user => {
-                  return <div>{user.email}</div>;
+                  return <h1 style={{ lineHeight: 1.5 }}>{user.email}</h1>;
                 })}
               </div>
               <div className="col-md-6">
