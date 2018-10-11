@@ -1,7 +1,3 @@
-@import "./bootstrap/bootstrap-grid";
-@import "./_variables.scss";
-@import "./fonts";
-@import "./_reset.scss";
-@import "./_scaffolding.scss";
-@import "./_header.scss";
-@import "./_products.scss";
+@import "./base/_index.scss";
+@import "./common/_index.scss";
+@import "./pages/_index.scss";

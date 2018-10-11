@@ -1,0 +1,18 @@
+.add-event-form {
+  .col-6,
+  .col-12 {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  h4 {
+    color: $primary-color;
+    font-size: 18px;
+    font-weight: normal;
+  }
+  @media (max-width: 480px) {
+    margin: 0 -16px;
+    .button.primary {
+      max-width: 100% !important;
+    }
+  }
+}

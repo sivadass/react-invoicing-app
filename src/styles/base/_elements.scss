@@ -1,0 +1,225 @@
+.form-control {
+  border: 1px solid $light-text-color;
+  height: 44px;
+  border-radius: 6px;
+  background: $white;
+  padding: 0 16px;
+  display: block;
+  width: 100%;
+  &:active,
+  &:focus,
+  &:hover {
+    border-color: $primary-color;
+  }
+}
+textarea.form-control {
+  padding-top: 8px;
+  min-height: 126px;
+  padding-bottom: 8px;
+}
+.form-group {
+  margin-bottom: 16px;
+  //min-height: 90px;
+  & > label {
+    font-size: 14px;
+    opacity: 0.6;
+  }
+}
+.input-feedback {
+  font-size: 14px;
+  color: $error-color;
+}
+
+.custom-select {
+  .react-select__control {
+    border: 1px solid $light-text-color;
+    background: $white;
+    height: 44px;
+    border-radius: 6px;
+    &.react-select__control--is-focused {
+      border-color: $primary-color;
+      box-shadow: none;
+    }
+    .react-select__indicator-separator {
+      display: none;
+    }
+  }
+}
+
+.react-datepicker {
+  border: 1px solid #ccc !important;
+  box-shadow: $default-box-shadow;
+}
+.react-datepicker-wrapper {
+  display: block !important;
+  .react-datepicker__input-container {
+    display: block;
+  }
+  .custom-date-picker {
+    border: 1px solid $light-text-color;
+    background: $white;
+    height: 44px;
+    border-radius: 6px;
+    padding: 0 16px;
+    width: 100%;
+    display: block;
+  }
+}
+.react-datepicker__time-list-item {
+  padding: 5px !important;
+}
+
+.button {
+  border: 1px solid $light-text-color;
+  background: $white;
+  height: 48px;
+  border-radius: 6px;
+  display: block;
+  width: 100%;
+  &:hover {
+    background: $light-bg-color;
+    cursor: pointer;
+    border-color: $primary-color;
+  }
+  &.primary {
+    background: $primary-color;
+    color: $white;
+    border-color: transparent;
+  }
+  &.button-link {
+    line-height: 48px;
+    text-align: center;
+    color: inherit;
+    &.primary {
+      color: $white;
+    }
+  }
+
+  &.muted {
+    border-color: transparent;
+  }
+}
+.alert {
+  padding: 8px 16px;
+  margin-bottom: 16px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+}
+.alert-danger {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+}
+.alert-success {
+  color: #3c763d;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+}
+
+// Custon Fields Generator
+.custom-field-wrapper {
+  display: flex;
+  .form-control {
+    border-radius: 6px 0 0 6px;
+  }
+  .custom-select {
+    width: 120px;
+    flex-shrink: 0;
+    margin-left: -1px;
+    .react-select__control {
+      border-radius: 0 6px 6px 0;
+    }
+  }
+  .custom-checkbox {
+    margin-top: 4px;
+    display: flex;
+    align-items: center;
+    line-height: 24px;
+    input[type="checkbox"] {
+      display: none;
+      & + label {
+        cursor: pointer;
+        &:before {
+          content: "\002610";
+          font-size: 24px;
+          line-height: 24px;
+          vertical-align: text-bottom;
+        }
+      }
+      &:checked + label {
+        color: $primary-color;
+        &:before {
+          content: "\002611";
+          color: $primary-color;
+        }
+      }
+    }
+  }
+  .remove-button {
+    margin-top: 8px;
+    margin-left: auto;
+    height: 24px;
+    width: 80px;
+    font-size: 14px;
+    border-radius: 4px;
+    display: none;
+  }
+}
+.custom-field-group {
+  &:hover {
+    .custom-field-wrapper {
+      .remove-button {
+        display: block;
+      }
+    }
+  }
+}
+
+// Toast
+.custom-toast {
+  &.Toastify__toast {
+    border-radius: 6px;
+  }
+}
+
+// Confirm Alerts
+.react-confirm-alert-body {
+  font-family: "Inter UI", Arial, Helvetica, sans-serif;
+  color: $light-text-color;
+  h1 {
+    margin-bottom: 8px;
+    line-height: 40px;
+    color: $text-color;
+    font-size: 32px;
+  }
+}
+.react-confirm-alert-button-group {
+  & > button {
+    font-size: 16px;
+    min-width: 90px;
+    height: 44px;
+    background: $primary-color;
+    border-radius: 6px;
+    margin-right: 16px;
+    &:nth-child(2) {
+      background: transparent;
+      color: $primary-color;
+      border: 1px solid $primary-color;
+    }
+  }
+}
+
+// Empty  State
+.empty-state {
+  padding: 64px 16px;
+  text-align: center;
+  opacity: 0.45;
+  h1 {
+    line-height: 1.4;
+    margin-bottom: 8px;
+  }
+  p {
+    font-size: 20px;
+    line-height: 32px;
+  }
+}

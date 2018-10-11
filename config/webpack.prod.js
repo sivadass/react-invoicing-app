@@ -1,20 +1,22 @@
-const path = require('path');
-const merge = require('webpack-merge');
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const CleanWbepackPlugin = require('clean-webpack-plugin');
+const path = require("path");
+const merge = require("webpack-merge");
+const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const CleanWbepackPlugin = require("clean-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
+const MomentLocalesPlugin = require("moment-locales-webpack-plugin");
+const webpackCommon = require("./webpack.common");
 
-const webpackCommon = require('./webpack.common');
-
-const pathsToClean = ['docs'];
+const pathsToClean = ["dist"];
 const cleanOptions = {
-  root: path.resolve(__dirname, '../home/')
+  root: path.resolve(__dirname, "/dist")
 };
 
 module.exports = merge.smart(webpackCommon, {
   output: {
-    filename: "main.[chunkhash].js",
-    path: path.resolve(__dirname, '../docs/')
+    filename: "bundle.[chunkhash].js",
+    path: path.resolve(__dirname, "../dist/"),
+    publicPath: "/"
   },
   mode: "production",
   optimization: {
@@ -33,8 +35,8 @@ module.exports = merge.smart(webpackCommon, {
         default: false,
         commons: {
           test: /[\\/]node_modules[\\/]/,
-          name: 'vendor_app',
-          chunks: 'all',
+          name: "vendor_app",
+          chunks: "all",
           minChunks: 2
         }
       }
@@ -42,6 +44,23 @@ module.exports = merge.smart(webpackCommon, {
   },
   plugins: [
     new CleanWbepackPlugin(pathsToClean, cleanOptions),
-    new OptimizeCssAssetsPlugin()
+    new MomentLocalesPlugin(),
+    new OptimizeCssAssetsPlugin(),
+    new CopyWebpackPlugin([
+      {
+        from: "./favicon.ico",
+        to: "favicon.ico",
+        context: "./",
+        toType: "file",
+        force: true
+      },
+      {
+        from: "./_redirects",
+        to: "_redirects",
+        context: "./",
+        toType: "file",
+        force: true
+      }
+    ])
   ]
 });

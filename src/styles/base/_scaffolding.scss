@@ -1,0 +1,43 @@
+.container {
+  max-width: 1200px;
+  padding: 0 16px;
+  margin: 0 auto;
+  &.fluid {
+    max-width: 100%;
+  }
+}
+.main {
+  min-height: calc(100vh - 152px);
+}
+
+.page-header {
+  margin: 16px 0;
+  font-size: 20px;
+  .back-button {
+    margin-right: 16px;
+  }
+  span {
+    font-size: 14px;
+    line-height: 24px;
+    opacity: 0.66;
+  }
+}
+
+.page-content {
+  background: $white;
+  padding: 48px;
+  border-radius: 6px;
+  box-shadow: $default-box-shadow;
+  @media (max-width: 480px) {
+    padding: 24px;
+  }
+  @media (max-width: 360px) {
+    padding: 16px;
+  }
+}
+
+.page-loading {
+  display: flex;
+  justify-content: center;
+  min-height: 400px;
+}
