@@ -4,7 +4,7 @@ class Service {
   constructor() {
     let service = axios.create({
       headers: {
-        Authorization: "Bearer dummy_token"
+        Authorization: localStorage.getItem("acessToken")
       }
     });
     service.interceptors.response.use(this.handleSuccess, this.handleError);
@@ -63,7 +63,9 @@ class Service {
         data: payload
       })
       .then(response => callback(response.status, response.data))
-      .catch(error => callback(error.response.status, error.response.data.message))
+      .catch(error =>
+        callback(error.response.status, error.response.data.message)
+      );
   }
 }
 

@@ -52,6 +52,9 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: devMode ? "[name].css" : "[name].[hash].css",
       chunkFilename: devMode ? "[id].css" : "[id].[hash].css"
+    }),
+    new webpack.DefinePlugin({
+      SERVICE_URL: JSON.stringify("http://localhost:3000/api")
     })
   ]
 };

@@ -2,7 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import PropTypes from "prop-types";
-import { addEvent } from "../../actions/events";
 import { Link } from "react-router-dom";
 import EventListItem from "../common/event-list-item";
 import EmptyState from "../common/empty-state";

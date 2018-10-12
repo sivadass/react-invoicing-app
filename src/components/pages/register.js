@@ -6,7 +6,6 @@ import * as Yup from "yup";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import PropTypes from "prop-types";
-import { addUser } from "../../actions/users";
 import uuid from "uuid/v4";
 
 class Register extends React.Component {

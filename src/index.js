@@ -44,30 +44,6 @@ const Dashboard = props => (
   </DynamicImport>
 );
 
-const AddEvent = props => (
-  <DynamicImport load={() => import("./components/pages/add-event")}>
-    {Component =>
-      Component === null ? <PreLoader /> : <Component {...props} />
-    }
-  </DynamicImport>
-);
-
-const EditEvent = props => (
-  <DynamicImport load={() => import("./components/pages/edit-event")}>
-    {Component =>
-      Component === null ? <PreLoader /> : <Component {...props} />
-    }
-  </DynamicImport>
-);
-
-const EventDetails = props => (
-  <DynamicImport load={() => import("./components/pages/event-details")}>
-    {Component =>
-      Component === null ? <PreLoader /> : <Component {...props} />
-    }
-  </DynamicImport>
-);
-
 const NoMatch = props => (
   <DynamicImport load={() => import("./components/pages/no-match")}>
     {Component =>
@@ -92,17 +68,6 @@ const App = props => {
                 <Route path="/login/" component={Login} />
                 <Route path="/register/" component={Register} />
                 <ProtectedRoute exact path="/" component={Dashboard} />
-                <ProtectedRoute exact path="/add-event/" component={AddEvent} />
-                <ProtectedRoute
-                  exact
-                  path="/events/:id/"
-                  component={EventDetails}
-                />
-                <ProtectedRoute
-                  exact
-                  path="/events/:id/edit/"
-                  component={EditEvent}
-                />
                 <Route component={NoMatch} />
               </Switch>
             </div>
