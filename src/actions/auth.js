@@ -1,5 +1,5 @@
 import { push } from "connected-react-router";
-import { store } from "../store";
+import Service from "../utils/service";
 
 import {
   LOGIN_REQUEST,
@@ -36,31 +36,26 @@ export const logout = () => ({
 
 export function loginUser(credentials) {
   return dispatch => {
-    dispatch(requestLogin(credentials));
-    let users = store.getState().users.users;
-    let index = users.findIndex(user => user.email == credentials.email);
-    if (index !== -1 && users[index].password == credentials.password) {
-      let userData = users[index];
-      setTimeout(() => {
-        dispatch(receiveLogin(userData));
+    dispatch(requestLogin());
+    Service.post(`${SERVICE_URL}/Users/login`, credentials, (status, data) => {
+      if (status === 200) {
+        dispatch(receiveLogin(data));
         dispatch(push("/"));
-      }, 1000);
-    } else {
-      setTimeout(() => {
-        let message = "Invalid username or password!";
-        dispatch(loginError(message));
-      }, 1000);
-      setTimeout(() => {
-        let message = "";
-        dispatch(loginError(message));
-      }, 11000);
-    }
+      } else if (status == 400) {
+        dispatch(loginError(data));
+      }
+    });
   };
 }
 
 export function logoutUser() {
   return dispatch => {
-    dispatch(logout());
-    dispatch(push("/login"));
+    Service.post(`${SERVICE_URL}/Users/logout`, null, (status, data) => {
+      if (status === 204) {
+        dispatch(logout());
+      } else if (status == 400) {
+        console.log(data);
+      }
+    });
   };
 }

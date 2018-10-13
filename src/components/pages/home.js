@@ -6,75 +6,44 @@ import { Link } from "react-router-dom";
 import EventListItem from "../common/event-list-item";
 import EmptyState from "../common/empty-state";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import Service from "../../utils/service";
 import "react-tabs/style/react-tabs.css";
 
 class Dashboard extends React.Component {
-  render() {
-    const { events, userID } = this.props;
-    let myEvents = events.filter(event => event.eventCreator === userID);
-    let renderAllEvents = events.map(event => {
-      let isGoing = false;
-      if (event.attendees) {
-        let index = event.attendees.findIndex(attendee => attendee === userID);
-        if (index !== -1) {
-          isGoing = true;
-        }
+  componentDidMount() {
+    Service.get(`${SERVICE_URL}/Clients/`, (status, data) => {
+      if (status === 200) {
+        console.log(data);
+      } else {
+        console.log(data);
       }
-      return (
-        <EventListItem event={event} key={event.eventID} isGoing={isGoing} />
-      );
     });
-    let renderMyEvents = myEvents.map(event => {
-      return <EventListItem event={event} key={event.eventID} />;
-    });
-    if (!events) {
-      return "Loading...";
-    }
+  }
+  render() {
     return (
       <div className="container">
         <div className="page-header">Dashboard</div>
         <div className="page-content">
           <Tabs className="dashboard-tabs">
             <TabList>
-              <Tab>All Events ({events.length})</Tab>
-              <Tab>My Events ({myEvents.length})</Tab>
+              <Tab>All Events</Tab>
+              <Tab>My Events</Tab>
             </TabList>
 
-            <TabPanel>
-              {events.length > 0 ? (
-                renderAllEvents
-              ) : (
-                <EmptyState
-                  title="No events to show!"
-                  message="Please create an event by clicking the ADD NEW EVENT button."
-                />
-              )}
-            </TabPanel>
-            <TabPanel>
-              {myEvents.length > 0 ? (
-                renderMyEvents
-              ) : (
-                <EmptyState
-                  title="Create your first event!"
-                  message="So that it will appear here."
-                />
-              )}
-            </TabPanel>
+            <TabPanel />
+            <TabPanel />
           </Tabs>
         </div>
       </div>
     );
   }
 }
-const mapStateToProps = ({ auth, events }) => ({
-  userID: auth.user.userID,
-  events: events.events
+const mapStateToProps = ({ auth }) => ({
+  userID: auth.user.userId
 });
 
 Dashboard.ProtoTypes = {
-  auth: PropTypes.object,
-  addEvent: PropTypes.func,
-  events: PropTypes.array
+  auth: PropTypes.object
 };
 
 export default connect(

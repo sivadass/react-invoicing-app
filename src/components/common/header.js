@@ -31,13 +31,6 @@ class Header extends React.Component {
     if (!isInside && this.state.isDropdownActive) {
       this.setState({ isDropdownActive: false });
     }
-    // if () {
-    //   alert("hi");
-    // }
-    // alert("ji");
-    // this.state = {
-    //   isDropdownActive: false
-    // };
   };
 
   componentWillMount() {
