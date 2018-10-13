@@ -1,5 +1,4 @@
 import React from "react";
-import loading from "../../images/loading.svg";
 
 class NoMatch extends React.Component {
   render() {

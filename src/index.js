@@ -29,15 +29,8 @@ const Login = props => (
     }
   </DynamicImport>
 );
-const Register = props => (
-  <DynamicImport load={() => import("./components/pages/register")}>
-    {Component =>
-      Component === null ? <PreLoader /> : <Component {...props} />
-    }
-  </DynamicImport>
-);
-const Dashboard = props => (
-  <DynamicImport load={() => import("./components/pages/dashboard")}>
+const Home = props => (
+  <DynamicImport load={() => import("./components/pages/home")}>
     {Component =>
       Component === null ? <PreLoader /> : <Component {...props} />
     }
@@ -66,8 +59,7 @@ const App = props => {
             <div className="main">
               <Switch>
                 <Route path="/login/" component={Login} />
-                <Route path="/register/" component={Register} />
-                <ProtectedRoute exact path="/" component={Dashboard} />
+                <ProtectedRoute exact path="/" component={Home} />
                 <Route component={NoMatch} />
               </Switch>
             </div>

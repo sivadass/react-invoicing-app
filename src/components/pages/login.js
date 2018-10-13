@@ -20,6 +20,7 @@ class Login extends React.Component {
   }
 
   render() {
+    console.log(SERVICE_URL);
     return (
       <div className="container authentication">
         <div className="wrapper">
