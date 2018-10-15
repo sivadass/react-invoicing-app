@@ -1,6 +1,8 @@
 import axios from "axios";
-let store = JSON.parse(localStorage.getItem("state"));
-let accessToken = store ? store.auth.user.id : "";
+import { store } from "../store";
+
+let accessToken = store.getState().auth.user.id;
+
 class Service {
   constructor() {
     let service = axios.create({
@@ -19,7 +21,7 @@ class Service {
   handleError = error => {
     switch (error.response.status) {
       case 401:
-        this.redirectTo(document, "/login");
+        //this.redirectTo(document, "/login");
         break;
       case 404:
         this.redirectTo(document, "/404");

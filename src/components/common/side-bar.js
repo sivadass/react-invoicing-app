@@ -1,19 +1,22 @@
 import React from "react";
-import { NavLink, Link, withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Footer from "./footer";
 
 const Sidebar = () => {
   return (
-    <div className="app-sidebar">
+    <div className="sidebar">
       <ul>
         <li>
-          <NavLink to="/">Home</NavLink>
+          <Link to="/">Home</Link>
         </li>
         <li>
-          <NavLink to="/products">Products</NavLink>
+          <Link to="/invoices">Invoices</Link>
         </li>
         <li>
-          <NavLink to="/categories">Categories</NavLink>
+          <Link to="/clients">Clients</Link>
+        </li>
+        <li>
+          <Link to="/settings">Settings</Link>
         </li>
       </ul>
       <Footer />

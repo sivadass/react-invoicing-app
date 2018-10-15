@@ -11,7 +11,7 @@ import "react-tabs/style/react-tabs.css";
 
 class Dashboard extends React.Component {
   componentDidMount() {
-    Service.get(`${SERVICE_URL}/Clients/`, (status, data) => {
+    Service.get(`${SERVICE_URL}/Invoices/`, (status, data) => {
       if (status === 200) {
         console.log(data);
       } else {

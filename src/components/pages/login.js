@@ -63,6 +63,7 @@ class Login extends React.Component {
                   <div className="form-group">
                     <input
                       id="email"
+                      name="email"
                       placeholder="Email Address"
                       type="text"
                       value={values.email}
@@ -82,6 +83,7 @@ class Login extends React.Component {
                   <div className="form-group">
                     <input
                       id="password"
+                      name="password"
                       placeholder="Password"
                       type="password"
                       value={values.password}

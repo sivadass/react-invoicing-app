@@ -8,10 +8,10 @@ import { Provider } from "react-redux";
 import DynamicImport from "./dynamic-import";
 import ProtectedRoute from "./protected-route";
 import Header from "./components/common/header";
-import Footer from "./components/common/footer";
 import Loader from "./components/common/loader";
 import ScrollToTop from "./components/common/scroll-to-top";
 import { store, history } from "./store";
+import Sidebar from "./components/common/side-bar";
 import { saveState } from "./utils/local-storage";
 import "./styles/index.scss";
 import "react-toastify/dist/ReactToastify.css";
@@ -31,6 +31,27 @@ const Login = props => (
 );
 const Home = props => (
   <DynamicImport load={() => import("./components/pages/home")}>
+    {Component =>
+      Component === null ? <PreLoader /> : <Component {...props} />
+    }
+  </DynamicImport>
+);
+const Invoices = props => (
+  <DynamicImport load={() => import("./components/pages/invoices")}>
+    {Component =>
+      Component === null ? <PreLoader /> : <Component {...props} />
+    }
+  </DynamicImport>
+);
+const Clients = props => (
+  <DynamicImport load={() => import("./components/pages/clients")}>
+    {Component =>
+      Component === null ? <PreLoader /> : <Component {...props} />
+    }
+  </DynamicImport>
+);
+const Settings = props => (
+  <DynamicImport load={() => import("./components/pages/settings")}>
     {Component =>
       Component === null ? <PreLoader /> : <Component {...props} />
     }
@@ -56,14 +77,19 @@ const App = props => {
         <ScrollToTop>
           <div className="app-wrapper">
             <Header />
-            <div className="main">
-              <Switch>
-                <Route path="/login/" component={Login} />
-                <ProtectedRoute exact path="/" component={Home} />
-                <Route component={NoMatch} />
-              </Switch>
+            <div className="main-wrapper">
+              <Sidebar />
+              <div className="main">
+                <Switch>
+                  <Route path="/login/" component={Login} />
+                  <ProtectedRoute exact path="/" component={Home} />
+                  <ProtectedRoute exact path="/invoices" component={Invoices} />
+                  <ProtectedRoute exact path="/clients" component={Clients} />
+                  <ProtectedRoute exact path="/settings" component={Settings} />
+                  <Route component={NoMatch} />
+                </Switch>
+              </div>
             </div>
-            <Footer />
             <ToastContainer position="bottom-center" autoClose={5000} />
           </div>
         </ScrollToTop>

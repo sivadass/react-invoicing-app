@@ -8,10 +8,15 @@
 }
 .main {
   min-height: calc(100vh - 152px);
+  flex-grow: 1;
+  .container {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
 }
 
 .page-header {
-  margin: 16px 0;
+  margin: 24px 0;
   font-size: 20px;
   .back-button {
     margin-right: 16px;
@@ -20,6 +25,16 @@
     font-size: 14px;
     line-height: 24px;
     opacity: 0.66;
+  }
+}
+
+.main-wrapper {
+  display: flex;
+  .sidebar {
+    flex-basis: 200px;
+    height: calc(100vh - 150px);
+    background: $text-color;
+    padding: 24px 0;
   }
 }
 
